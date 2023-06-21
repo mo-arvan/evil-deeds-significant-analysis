@@ -24,6 +24,10 @@ for f in os.listdir(path):
 
 sorted_result = sorted(result_list, reverse=True)
 
+with open("results/rethinking_result.txt", "w") as file:
+    for result in sorted_result:
+        file.write(str(result) + "\n")
+
 top_half = sorted_result[:len(sorted_result) // 2]
 bottom_half = sorted_result[len(sorted_result) // 2:]
 
