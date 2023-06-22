@@ -5,7 +5,7 @@ import numpy as np
 # 2023-06-02 03:56:07 | INFO | fairseq_cli.generate | Generate test with beam=5: BLEU4 = 34.76, 68.2/42.6/28.6/19.6 (BP=0.974, ratio=0.975, syslen=127816, reflen=131156)
 
 
-result_list = []
+file_name_result_list = []
 
 path = "results/rethinking/"
 
@@ -19,20 +19,26 @@ for f in os.listdir(path):
 
             bleu = re.findall(bleu_pattern, last_line)[0]
 
-            result_list.append(float(bleu))
+            file_name_result_list.append((f, float(bleu)))
 
 
-sorted_result = sorted(result_list, reverse=True)
+sorted_file_name_result_list = sorted(file_name_result_list, reverse=True, key=lambda x: x[1])
 
 with open("results/rethinking_result.txt", "w") as file:
-    for result in sorted_result:
+    for result in sorted_file_name_result_list:
         file.write(str(result) + "\n")
 
-top_half = sorted_result[:len(sorted_result) // 2]
-bottom_half = sorted_result[len(sorted_result) // 2:]
+
+result_list = [r[1] for r in sorted_file_name_result_list]
+
+top_half = result_list[:len(result_list) // 2]
+bottom_half = result_list[len(result_list) // 2:]
 
 seed = 1234
 np.random.seed(seed)
+
+# shuffled_result = np.random.permutation(sorted_file_name_result_list)
+
 min_eps = aso(top_half, bottom_half, seed=seed)  # min_eps = 0.225, so A is better
 
-print("Top half: ", min_eps)
+print("min_eps: ", min_eps)
