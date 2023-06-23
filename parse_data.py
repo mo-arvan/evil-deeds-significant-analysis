@@ -2,6 +2,7 @@ import os
 import re
 from deepsig import aso
 import numpy as np
+import pandas as pd
 # 2023-06-02 03:56:07 | INFO | fairseq_cli.generate | Generate test with beam=5: BLEU4 = 34.76, 68.2/42.6/28.6/19.6 (BP=0.974, ratio=0.975, syslen=127816, reflen=131156)
 
 
@@ -29,16 +30,7 @@ with open("results/rethinking_result.txt", "w") as file:
         file.write(str(result) + "\n")
 
 
-result_list = [r[1] for r in sorted_file_name_result_list]
+results_df = pd.DataFrame(sorted_file_name_result_list, columns=["model", "bleu"])
 
-top_half = result_list[:len(result_list) // 2]
-bottom_half = result_list[len(result_list) // 2:]
+results_df.to_csv("results/rethinking_result.csv", index=False)
 
-seed = 1234
-np.random.seed(seed)
-
-# shuffled_result = np.random.permutation(sorted_file_name_result_list)
-
-min_eps = aso(top_half, bottom_half, seed=seed)  # min_eps = 0.225, so A is better
-
-print("min_eps: ", min_eps)
