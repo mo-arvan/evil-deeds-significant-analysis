@@ -1,0 +1,5 @@
+Number of significant results: 461
+Number of significant results with effect size > 0.2: 461
+Number of significant results with effect size > 0.5: 461
+Number of significant results with effect size > 0.8: 179
+Number of significant results with effect size > 1.2: 0

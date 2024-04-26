@@ -1,0 +1,4 @@
+Required Sample Size for effect size 0.2: 394
+Required Sample Size for effect size 0.5: 64
+Required Sample Size for effect size 0.8: 26
+Required Sample Size for effect size 1.2: 12
