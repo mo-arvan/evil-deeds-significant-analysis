@@ -9,8 +9,18 @@ mt_results = pd.read_csv('results/rethinking_result.csv')["bleu"].tolist()
 ts_results = pd.read_csv('results/text-simplification/search.csv')["BLEU"].tolist()
 
 
-mt_results = sorted(mt_results)
-ts_results = sorted(ts_results)
+
+
+print(f'Mean: {np.mean(mt_results):.2f}, Median {np.median(mt_results):.2f}, Std: {np.std(mt_results):.2f},        Min: {np.min(mt_results):.2f}, Max: {np.max(mt_results):.2f}')
+
+print(f'Mean: {np.mean(ts_results):.2f}, Median {np.median(ts_results):.2f}, Std: {np.std(ts_results):.2f},        Min: {np.min(ts_results):.2f}, Max: {np.max(ts_results):.2f}')
+
+# Mean: 36.18, Median 36.19, Std: 0.20,        Min: 34.76, Max: 36.46
+# Mean: 87.90, Median 88.11, Std: 1.16,        Min: 84.47, Max: 89.59
+
+
+mt_results = sorted(mt_results, reverse=True)
+ts_results = sorted(ts_results, reverse=True)
 
 top_half = mt_results[:len(mt_results) // 2]
 bottom_half = mt_results[len(mt_results) // 2:]

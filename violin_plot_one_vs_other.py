@@ -4,6 +4,10 @@ import pandas as pd
 mt_results = pd.read_csv('results/rethinking_result.csv')["bleu"].tolist()
 ts_results = pd.read_csv('results/text-simplification/search.csv')["BLEU"].tolist()
 
+mt_results = sorted(mt_results, reverse=True)
+ts_results = sorted(ts_results, reverse=True)
+
+
 top_mt = mt_results[:len(mt_results) // 2]
 bottom_mt = mt_results[len(mt_results) // 2:]
 

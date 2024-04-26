@@ -4,4 +4,4 @@ FROM python:3.11-slim
 #RUN #apt update && apt install wget
 
 RUN pip install --upgrade pip && \
-    pip install --upgrade numpy seaborn matplotlib pandas deepsig
+    pip install --upgrade numpy seaborn matplotlib pandas deepsig sacrebleu krippendorff jinja2 scipy statsmodels

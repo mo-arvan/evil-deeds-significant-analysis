@@ -1,2 +1,9 @@
 .idea
 .idea/*
+/results/rethinking/evaluation_logs/
+/results/text-simplification/best/
+/results/text-simplification/nts_search_test_translation/
+/results/text-simplification/nts_search_validation_translation/
+/results/text-simplification/nts_test_selected/
+/results/text-simplification/references/
+/results/text-simplification/worst/
